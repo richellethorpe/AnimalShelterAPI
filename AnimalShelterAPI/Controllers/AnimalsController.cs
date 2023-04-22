@@ -1,42 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShelterApi.Models;
+using AnimalShelterApi.Models;
 
-namespace ShelterApi.Controllers
+namespace AnimalShelterApi.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
   public class AnimalsController : ControllerBase
   {
-    private readonly ShelterApi _db;
+    private readonly AnimalShelterApiContext _db;
 
-    public AnimalsController(ShelterApiContext db)
+    public AnimalsController(AnimalShelterApiContext db)
     {
       _db = db;
     }
 
     // GET api/animals
     [HttpGet]
-    public async Task<List<Animal>> Get(string species, string name, int minimumAge)
+    public async Task<ActionResult<IEnumerable<Animal>>> Get()
     {
-      IQueryable<Animal> query = _db.Animals.AsQueryable();
-
-      if (species != null)
-      {
-        query = query.Where(entry => entry.Species == species);
-      }
-
-      if (name != null)
-      {
-        query = query.Where(entry => entry.Name == name);
-      }
-
-      if (minimumAge > 0)
-      {
-        query = query.Where(entry => entry.Age >= minimumAge);
-      }
-
-      return await query.ToListAsync();
+      return await _db.Animals.ToListAsync();
     }
 
     // GET: api/Animals/5

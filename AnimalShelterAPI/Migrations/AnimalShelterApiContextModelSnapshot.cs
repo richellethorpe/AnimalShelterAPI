@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnimalShelter.Migrations
 {
-    [DbContext(typeof(AnimalApiContext))]
-    partial class AnimalApiContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AnimalShelterApiContext))]
+    partial class AnimalShelterApiContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

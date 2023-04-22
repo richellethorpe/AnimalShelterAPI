@@ -10,7 +10,7 @@
     }
   },
   "profiles": {
-    "CretaceousApi": {
+    "AnimalShelterApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -20,7 +20,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CretaceousApi-Production": {
+    "AnimalShelterApi-Production": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

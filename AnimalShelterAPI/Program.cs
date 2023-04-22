@@ -1,17 +1,11 @@
-using ShelterApi.Models;
-using System.Text.Json.Serialization;
-
+using AnimalShelterApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers().AddJsonOptions(options =>
-  {
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-  }
-);
+builder.Services.AddControllers();
 
-builder.Services.AddDbContext<ShelterApiContext>(
+builder.Services.AddDbContext<AnimalShelterApiContext>(
                   dbContextOptions => dbContextOptions
                     .UseMySql(
                       builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]

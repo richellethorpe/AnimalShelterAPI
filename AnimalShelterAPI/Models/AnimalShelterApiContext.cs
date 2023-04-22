@@ -1,15 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ShelterApi.Models
+namespace AnimalShelterApi.Models
 {
-  public class ShelterApiContext : DbContext
+  public class AnimalShelterApiContext : DbContext
   {
     public DbSet<Animal> Animals { get; set; }
-    
-    public ShelterApiContext(DbContextOptions<ShelterApiContext> options) : base(options)
+
+    public AnimalShelterApiContext(DbContextOptions<AnimalShelterApiContext> options) : base(options)
     {
     }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<Animal>()

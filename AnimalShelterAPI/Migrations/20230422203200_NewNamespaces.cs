@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AnimalShelter.Migrations
 {
-    public partial class SeedData : Migration
+    public partial class NewNamespaces : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnimalShelter.Migrations
 {
-    [DbContext(typeof(AnimalApiContext))]
-    [Migration("20230422185729_SeedData")]
-    partial class SeedData
+    [DbContext(typeof(AnimalShelterApiContext))]
+    [Migration("20230422203200_NewNamespaces")]
+    partial class NewNamespaces
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
