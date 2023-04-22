@@ -8,9 +8,13 @@ namespace AnimalShelterApi.Models
 
     public string AnimalName { get; set; }
  
-    public string Type { get; set; }
- 
-    public string Country { get; set; }
+    public string AnimalType { get; set; }
+
+    public string AnimalBreed { get; set; }
+
+    public int Age { get; set; }
+
+    public string City { get; set; }
 
   }
 }
