@@ -15,14 +15,14 @@ namespace AnimalShelterApi.Controllers
       _db = db;
     }
 
-    // GET api/animals
+   
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Animal>>> Get()
     {
       return await _db.Animals.ToListAsync();
     }
 
-    // GET: api/Animals/5
+   
     [HttpGet("{id}")]
     public async Task<ActionResult<Animal>> GetAnimal(int id)
     {
@@ -36,7 +36,6 @@ namespace AnimalShelterApi.Controllers
       return animal;
     }
 
-    // POST api/animals
     [HttpPost]
     public async Task<ActionResult<Animal>> Post([FromBody] Animal animal)
     {
@@ -45,7 +44,6 @@ namespace AnimalShelterApi.Controllers
       return CreatedAtAction(nameof(GetAnimal), new { id = animal.AnimalId }, animal);
     }
 
-        // PUT: api/Animals/5
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Animal animal)
     {
@@ -80,8 +78,7 @@ namespace AnimalShelterApi.Controllers
       return _db.Animals.Any(e => e.AnimalId == id);
     }
 
-    // DELETE: api/Animals/5
-    [HttpDelete("{id}")]
+     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAnimal(int id)
     {
       Animal animal = await _db.Animals.FindAsync(id);
