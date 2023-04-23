@@ -29,16 +29,19 @@ namespace AnimalShelterApi.Controllers
 
    
     [HttpGet("{id}")]
-    public async Task<ActionResult<Animal>> GetAnimal(int id)
+    public async Task<IActionResult> GetAnimal(int id)
     {
-      Animal animal = await _db.Animals.FindAsync(id);
+            var animal = await _context.Animals.FirstOrDefaultAsync(animal => animal.AnimalId == id);
 
-      if (animal == null)
-      {
-        return NotFound();
-      }
+            if (animal == null)
+            {
+                Response<Animal> animal = new Response<Animal>();
+                response.Succeeded = false;
+                response.Message = "Animal was not found in the database";
+                return NotFound(response);
+            }
 
-      return animal;
+            return Ok(new Response<Animal> (animal));
     }
 
     [HttpPost]
@@ -50,14 +53,14 @@ namespace AnimalShelterApi.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, Animal animal)
+    public async Task<IActionResult> PutAnimal(int id, Animal animal)
     {
       if (id != animal.AnimalId)
       {
         return BadRequest();
       }
 
-      _db.Animals.Update(animal);
+      _db.Entry(animal).State = EntityState.Modified;
 
       try
       {
