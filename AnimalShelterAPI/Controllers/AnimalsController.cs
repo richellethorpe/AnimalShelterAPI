@@ -31,17 +31,17 @@ namespace AnimalShelterApi.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAnimal(int id)
     {
-            var animal = await _context.Animals.FirstOrDefaultAsync(animal => animal.AnimalId == id);
+            var animal = await _db.Animals.Where(animal => animal.AnimalId == id).FirstOrDefaultAsync();
 
-            if (animal == null)
-            {
-                Response<Animal> animal = new Response<Animal>();
-                response.Succeeded = false;
-                response.Message = "Animal was not found in the database";
-                return NotFound(response);
-            }
+            // if (animal == null)
+            // {
+            //     Response<Animal> animal = new Response<Animal>();
+            //     response.Succeeded = false;
+            //     response.Message = "Animal was not found in the database";
+            //     return NotFound(response);
+            // }
 
-            return Ok(new Response<Animal> (animal));
+            return Ok(new Response<Animal>(animal));
     }
 
     [HttpPost]
